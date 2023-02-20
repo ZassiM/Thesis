@@ -1,0 +1,73 @@
+% !TEX program = pdflatex
+% !BIB program = biber
+\documentclass[11pt,
+	a4paper,
+	bibliography=totocnumbered,   % totoc
+	captions=tableheading,
+	headings=normal,
+	parskip=half*,
+	chapterentrydots=true,
+	numbers=noenddot
+	]{scrreprt}
+
+% Define the number of the work here
+\newcommand{\thesisNo}{4xxxxx}
+
+% load packages
+\input{header}
+
+% Load acronyms from file
+\loadglsentries[acronym]{glossaries/acronym_entries}
+% Load symbols from file
+\loadglsentries[symbolslist]{glossaries/symbol_entries}
+
+% literature and biber settings
+\input{biberHeader}
+
+\addbibresource{literature/literature.bib}
+
+\begin{document}
+
+%\listoftodos \newpage
+\includepdf[pages={1}]{CoverSheet.pdf}
+\newpage
+
+% uncomment for empty page
+\thispagestyle{empty}
+%\mbox{}
+%\newpage
+\pagenumbering{arabic}
+\pagestyle{plain}
+\setcounter{page}{3}
+\tableofcontents
+\newpage
+
+
+\pagestyle{ika}
+
+\include{content/1_Introduction}
+\include{content/2_StateOfTheArt}
+\include{content/3_ResearchQuestions}
+\include{content/6_Conclusion}
+
+\pagestyle{plain}
+
+
+\setlength\LTleft{-6pt}
+\setlength\LTright{0pt}
+
+% List of symbols
+\printglossary[type=symbolslist,style=symbunitlong,title=List of Symbols,toctitle=Symbols]
+
+% List of Abbreviations
+\printglossary[type=acronym,style=long,title=List of Abbreviations,toctitle=Abbreviations]
+
+% Bibliography list
+\printbibliography
+
+% Appendix
+\include{content/Appendix}
+
+\glsaddall
+
+\end{document}

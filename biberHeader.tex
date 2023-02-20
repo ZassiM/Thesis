@@ -1,0 +1,79 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Literaturverzeichnis basierend auf:
+% Biblatex mit Biber als Backend
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-----------------------Literaturverzeichnis---------------------------%
+\usepackage[
+ maxalphanames=1,
+ minalphanames=1,
+ style=alphabetic,
+ backend=biber,
+ sorting=nyt,
+ maxcitenames=5,
+ maxbibnames=1000,
+ giveninits=true
+ ]{biblatex}
+\DeclareNameAlias{default}{family-given}
+
+%zeilenumbruch nach autor
+\renewcommand*{\mkbibnamefamily}[1]{\MakeUppercase{#1}}	% UpperCase für Namen
+\renewcommand*{\newunitpunct}{\addcomma\space}   		% Komma statt Punkt
+\renewcommand*{\finentrypunct}{}                        % kein Punkt am Ende der Einträge
+\DeclareFieldFormat[article, book, inbook, inproceedings, misc, techreport, phdthesis]{citetitle}{#1}
+\DeclareFieldFormat[article, book, inbook, inproceedings, misc, techreport, phdthesis]{title}{#1}
+
+\renewcommand*{\labelnamepunct}{\newline}				% Zeilenumbruch statt Komma hinter Autoren
+\renewcommand*{\labelalphaothers}{}						% "+" bei mehreren Autoren entfernen
+\renewbibmacro{in:}{}									% "in:" Zusatz bei Artikel in Journaleinträgen entfernen
+\renewcommand*{\bibfont}{}
+
+% Formatierung der Zitierungslabels
+\DeclareLabelalphaTemplate{
+	\labelelement{
+		\field[uppercase,final]{shorthand}
+		\field[uppercase]{label}
+		\field[uppercase,strwidth=3,strside=left,ifnames=1]{labelname}
+		\field[uppercase,strwidth=1,strside=left]{labelname}
+	}
+	\labelelement{
+		\field[strwidth=2,strside=right]{year}
+	}
+}
+\renewcommand{\labelnamepunct}{\newline\bibsentence}
+%zeilenumbruch nach titel
+\usepackage{xpatch}
+\makeatletter
+\def\do#1{
+  \ifcsdef{blx@bbx@#1}
+    {\xpatchbibdriver{#1}
+       {\printlist{language}%
+        \newunit\newblock}
+       {\printlist{language}%
+        \printunit{\newline\bibsentence}}
+       {}{}}
+    {}} 
+\abx@doentrytypes
+\makeatother
+%keine kursiven schriften im literaturverzeichnis
+\DeclareFieldFormat{citetitle}{{#1}}
+\DeclareFieldFormat{journaltitle}{{#1}}
+\DeclareFieldFormat{issuetitle}{{#1}}
+\DeclareFieldFormat{maintitle}{{#1}}
+\DeclareFieldFormat{booktitle}{{#1}}
+\DeclareFieldFormat{title}{{#1}}
+%keine anführungsstriche um den titel
+\DeclareFieldFormat[article]{title}{#1}
+\DeclareFieldFormat[thesis]{title}{#1}
+\DeclareFieldFormat[inproceedings]{title}{#1}
+\DeclareFieldFormat[incollection]{title}{#1}
+%kein in: vor journals
+\renewbibmacro{in:}{} 
+\urlstyle{same} %keine formatierung für urls
+%commas betwwen mltiple cites
+\renewcommand\multicitedelim{\addcomma\space}
+%no "and" or "und" between authors
+\DefineBibliographyExtras{english}{%
+  \renewcommand*{\finalnamedelim}{\addcomma\addspace}%
+}

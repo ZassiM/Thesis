@@ -1,0 +1,49 @@
+# Text files
+*.pdf
+*.out
+*.log
+*.aux
+
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+
+## Intermediate documents:
+*.dvi
+*-converted-to.*
+
+# makeidx
+*.idx
+*.ilg
+*.ind
+*.ist
+*.slg
+*.syg
+*.syi
+
+## Build tool auxiliary files:
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
+
+## Bibliography auxiliary files (bibtex/biblatex/biber):
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.brf
+*.run.xml
+*.bib.bak
+*.bak
+*.sav
+*.acn
+*.acr
+*.alg
+*.lol
+*.tps

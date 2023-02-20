@@ -1,0 +1,324 @@
+%scrhack, um @addtolists warnings zu unterdrücken, bei Paketen, die KOMA kennt (insbesondere listings)
+\usepackage{scrhack}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[scaled=1]{uarial} % set default font to arial
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{csquotes}
+
+% enable hyperlinks in pdf documennt
+\usepackage[hidelinks]{hyperref}
+\usepackage[colorinlistoftodos]{todonotes}\reversemarginpar
+
+%enable \gls
+\usepackage[automake,nonumberlist,acronym,toc,nopostdot,nomain,numberedsection=autolabel]{glossaries}
+\newglossary[slg]{symbolslist}{syi}{syg}{Symbols} % create add. symbolslist
+\makeglossaries
+% Displays unit in symbole list
+\newglossarystyle{symbunitlong}{
+	\setglossarystyle{long4col}
+	\renewcommand*{\glossentry}[2]{
+		\glstarget{##1}{\glossentryname{##1}} %
+		& \glssymbol{##1}
+		& \glossentrydesc{##1}  \tabularnewline
+	}
+}
+\makeindex
+\setacronymstyle{long-short}
+\glsaddall
+
+%% the following commands are needed for some matlab2tikz features
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots}
+\usepackage{tikzscale}
+\pgfplotsset{
+    every tick label/.append style = {/pgf/number format/assume math mode=true,font=\sffamily},
+}
+\pgfplotsset{max space between ticks=50}
+\pgfplotsset{compat=newest}
+
+
+%\usepackage{grffile}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{rotating}
+\usepackage{cleveref}
+%\crefname{equation}{eq.}{eqs.}
+%\Crefname{equation}{Eq.}{Eqs.}
+\crefformat{equation}{Eq.~#2#1#3}
+\Crefformat{equation}{Eq.~#2#1#3}
+%\crefformat{subfigure}{Fig.~#2(#1)#3}
+\crefname{table}{Fig.}{Figs.}
+\crefname{figure}{Fig.}{Figs.}
+\Crefname{table}{Fig.}{Figs.}
+\crefname{chapter}{Chapter}{Chapters}
+\Crefname{chapter}{Chapter}{Chapters}
+\crefname{appendix}{Appendix}{}
+\crefname{section}{Chapter}{Chapters}
+\Crefname{section}{Chapter}{Chapters}
+\crefname{subsection}{Chapter}{Chapters}
+\Crefname{subsection}{Chapter}{Chapters}
+\crefname{subsubsection}{Chapter}{Chapters}
+\Crefname{subsubsection}{Chapter}{Chapters}
+
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{tensor}
+\usepackage{pdfpages}
+\usepackage{bm}
+\usepackage[section]{placeins}
+
+% set page margins etc.
+\usepackage[
+	headheight=1.25cm,
+	headsep=1.25cm,
+	left=3.0cm,
+	right=2.0cm,
+	top=3.0cm,
+	bottom=2.5cm]{geometry}
+	
+\usepackage[labelformat=simple]{subcaption}
+\usepackage[onehalfspacing]{setspace}
+\AtBeginEnvironment{tabular}{\onehalfspacing}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{tabto}
+\usepackage{pbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% IKA - format	        %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-----------------------Inhaltsverzeichnis---------------------------%
+%Maximale Gliederungstiefe, die noch ins Inhaltsverzeichnis aufgenommen wird
+%maximum depth for the table of contents
+%Tiefe von 4 erlaubt, aber häufig Verwendung von 3
+%\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{4}
+%Nummerierung der Überschriften bis zu welcher Schachtelung
+\setcounter{secnumdepth}{4}
+% Formatierung des Inhaltsverzeichnisses
+\setkomafont{disposition}{\normalfont} 
+\addtokomafont{chapterentry}{\normalfont}
+%COUNTER needed, to have 12pt space before AND after each new chapter, but 6pt else
+%LaTeX lets us only set space before a contentsline, so we have to check, if a
+%section is the first in its chapter, and only then add 12pt before the section
+\newcounter{sectionref}
+\setcounter{sectionref}{1}
+%set indentation in table of contents
+\makeatletter
+\renewcommand{\l@chapter}{\vspace{12pt} \setcounter{sectionref}{1} \@dottedtocline{1}{0cm}{0.9cm}}
+\renewcommand\l@section{ \ifthenelse{\value{sectionref}=1}{\vspace{12pt}}{\vspace{6pt}} \stepcounter{sectionref} \@dottedtocline{2}{0.3cm}{1.25cm}}
+\renewcommand\l@subsection{\vspace{6pt}\@dottedtocline{3}{0.6cm}{1.34cm}}
+\renewcommand*\l@subsubsection{\vspace{6pt}\@dottedtocline{4}{0.9cm}{1,82cm}}
+%narrow dots, like in WORD
+\renewcommand\@dotsep{1}% default is 4.5
+\makeatother
+
+
+%% labelin
+%\newcommand{\reffig}[1]{Fig.~\ref{#1}}
+%\newcommand{\refsec}[1]{Chapter~\ref{#1}}
+%\newcommand{\refapp}[1]{Appendix~\ref{#1}}
+%\newcommand{\refeq}[1]{Eq.~\ref{#1}}
+
+% Anpassung der Gleichungsbeschriftung an das IKA-Layout, e.g. "Gl. 1-1"
+\makeatletter
+	\def\@eqnnum{{\normalfont \normalcolor Eq.\quad \theequation}}
+	\def\tagform@#1{\maketag@@@{Eq.\quad\ignorespaces#1\unskip\@@italiccorr}}
+\makeatother
+
+% Anpassung der Tabellen- und Bildbeschriftung an das IKA-Layout, e.g. "Abb. 1-1:	" (Teil 2)
+\renewcaptionname{english}{\figurename}{Fig.}
+\renewcaptionname{english}{\tablename}{Fig.}
+\renewcommand{\thefigure}{{\thechapter-\arabic{figure}}}
+\renewcommand{\thetable}{{\thechapter-\arabic{figure}}}
+\renewcommand{\theequation}{{\thechapter-\arabic{equation}}}
+
+% Durchgehende Nummerierung für Abbildungen und Tabellen: IKA fordert Tabllen mit Abb-Caption: Abb. X-Y
+\makeatletter
+\let\c@table\c@figure
+\makeatother
+
+
+
+
+
+% Anpassung der Beschriftungen
+\usepackage[
+	style=base,
+	font=onehalfspacing,
+	format=hang,
+	margin=0cm,
+	singlelinecheck=false,
+	skip=6pt
+	]{caption}
+
+% Anpassung der Absätze vor und nach einer figure Umgebung
+\setlength{\intextsep}{12pt}
+
+\renewcommand{\thesubfigure}{(\roman{subfigure})}
+
+% RWTH Farbdefinitionen
+\definecolor{blueRWTH}{cmyk}{1.0,0.5,0,0}
+\definecolor{blueLightRWTH}{cmyk}{0.75,0.38,0,0}
+\definecolor{blueLighterRWTH}{cmyk}{0.45,0.14,0,0}
+
+\definecolor{greenRWTH}{cmyk}{0.7,0.0,1.0,0}
+\definecolor{greenLightRWTH}{cmyk}{0.525,0,0.75,0}
+\definecolor{greenLighterRWTH}{cmyk}{0.35,0,0.5,0}
+
+\definecolor{orangeRWTH}{cmyk}{0,0.4,1.0,0}
+\definecolor{orangeLightRWTH}{cmyk}{0,0.3,0.75,0}
+\definecolor{orangeLighterRWTH}{cmyk}{0,0.2,0.5,0}
+
+\definecolor{redRWTH}{cmyk}{0.15,1,1,0}
+\definecolor{redLightRWTH}{cmyk}{0.1125,0.75,0.75,0}
+\definecolor{redLighterRWTH}{cmyk}{0.075,0.5,0.5,0}
+\definecolor{rwthLight}{cmyk}{0.0,0.0,0.0,0.5}
+
+
+% Kopf- und Fußzeile
+%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[
+%	headsepline=0.75pt,
+%	plainheadsepline=true,
+%	footsepline=false,
+%	plainfootsepline
+%	]{scrlayer-scrpage} % Für die Kopf- und Fußzeile inkl. Trennlinie und Titel groß geschrieben
+%
+
+%
+%\ihead*[\thechapter \tabto{1cm}{\leftmark}]{\thechapter \tabto{1cm}{\leftmark}}
+%\cohead*[]{}
+%\rohead*[\thepage]{\thepage}
+%\ifoot*[]{}
+%\cofoot*[]{}
+%\rofoot*[]{}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+% Change the color of the header to the light gray and remove the spacing between header text and line
+\let\oldheadrule\headrule% Copy \headrule into \oldheadrule
+\renewcommand{\headrule}{\color{rwthLight}\oldheadrule}% Add colour to \headrule
+\renewcommand{\headrulewidth}{0.75pt}
+
+\fancypagestyle{ika}{%
+    \fancyhf{}
+    \lhead{\color{rwthLight}\thechapter \tabto{1cm} \leftmark}
+    \rhead{\color{rwthLight}\thepage}
+    \fancyfoot[]{}
+    \rfoot{\color{rwthLight}\tiny{\thesisNo}}
+}
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \lhead{\color{rwthLight}\leftmark}
+    \rhead{\color{rwthLight}\thepage}
+    \fancyfoot[]{}
+}
+\fancypagestyle{apx}{%
+    \fancyhf{}
+    \lhead{\color{rwthLight}Appendix - \leftmark}
+    \rhead{\color{rwthLight}\thepage}
+    \fancyfoot[]{}
+}
+
+
+% XML Listing
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstset{
+    basicstyle=\ttfamily,
+    columns=fullflexible,
+    frame = single, 
+    numbers = left,
+    showstringspaces=false,
+    commentstyle=\color{gray}\upshape
+}
+
+\lstdefinelanguage{XML}
+{
+    morestring=[b]",
+    morestring=[s]{>}{<},
+    morecomment=[s]{<?}{?>},
+    stringstyle=\color{black},
+    identifierstyle=\color{darkblue},
+    keywordstyle=\color{cyan},
+    morekeywords={}% list your attributes here
+}
+\pgfkeys{/pgf/number format/.cd,1000 sep={}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatierung der Überschriften
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Kapitelüberschrift
+\RedeclareSectionCommands[
+  afterskip=4pt,
+  beforeskip=4pt
+]{chapter}
+
+% Unterkapitel
+\RedeclareSectionCommands[
+  afterskip=4pt,
+  beforeskip=4pt
+]{section}
+
+\RedeclareSectionCommands[
+  afterskip=4pt,
+  beforeskip=4pt
+]{subsection}
+
+% Unterkapitel
+\RedeclareSectionCommands[
+  afterskip=4pt,
+  beforeskip=4pt
+]{subsubsection}
+
+\RedeclareSectionCommands[
+  tocindent=0.3cm
+]{section}
+
+\RedeclareSectionCommands[
+  tocindent=0.6cm
+]{subsection}
+
+\RedeclareSectionCommands[
+  tocindent=0.9cm
+]{subsubsection}
+
+\RedeclareSectionCommands[
+  tocbeforeskip=5pt
+]{section,subsection,subsubsection}
+
+% Tabstopp für Überschriften auf 1cm setzen
+\renewcommand*{\chapterformat}{%
+	\makebox[1cm][l]{\chapappifchapterprefix{\nobreakspace}\thechapter
+	\IfUsePrefixLine{}}}
+\renewcommand*{\sectionformat}{%
+	\makebox[2cm][l]{\thesection}}
+\renewcommand*{\subsectionformat}{%
+	\makebox[2cm][l]{\thesubsection}}
+\renewcommand*{\subsubsectionformat}{%
+	\makebox[2cm][l]{\thesubsubsection}}
+
+% Schriftarten
+\setkomafont{chapter}{\normalfont\bfseries}
+\setkomafont{section}{\normalfont\bfseries}
+\setkomafont{subsection}{\normalfont\bfseries}
+\setkomafont{subsubsection}{\normalfont\bfseries}
+\setkomafont{pagehead}{\normalfont}
+\setkomafont{chapterentry}{\normalfont}
