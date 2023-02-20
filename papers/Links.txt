@@ -1,0 +1,13 @@
+SpatialDETR
+https://github.com/cgtuebingen/SpatialDETR
+
+Exploring Explainability for Vision Transformers
+https://jacobgil.github.io/deeplearning/vision-transformer-explainability
+
+Explainability for Vision Transformers (in PyTorch)
+https://github.com/jacobgil/vit-explain
+
+Transformer Explainability
+https://www.youtube.com/watch?v=A1tqsEkSoLg&t=2s
+https://www.youtube.com/watch?v=a0O_QhE9XFM
+https://www.youtube.com/watch?v=6xePkn3-LME

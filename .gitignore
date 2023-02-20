@@ -1,5 +1,6 @@
 # Text files
-*.pdf
+#*.pdf
+main.pdf
 *.out
 *.log
 *.aux
