@@ -11,3 +11,6 @@ Transformer Explainability
 https://www.youtube.com/watch?v=A1tqsEkSoLg&t=2s
 https://www.youtube.com/watch?v=a0O_QhE9XFM
 https://www.youtube.com/watch?v=6xePkn3-LME
+
+For fixing graphics inside container:
+https://leimao.github.io/blog/Docker-Container-GUI-Display/
