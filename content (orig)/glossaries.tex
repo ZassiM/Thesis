@@ -1,0 +1,318 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Nomenklatur, Symbolverzeichnis
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Paket laden
+\usepackage[
+	nonumberlist, 	% keine Seitenzahlen anzeigen
+	toc,			% Einträge im Inhaltsverzeichnis
+	nopostdot
+	 ]{glossaries}
+     
+\newglossaryentry{GrMath}{name=\textbf{Mathematical Terms},description={},sort=A}
+\newglossaryentry{GrRoadDesign}{name=\textbf{Road Design Terms},description={},sort=B}
+\newglossaryentry{GrSimMap}{name=\textbf{Simulation Maps},description={},sort=C}
+%\newglossaryentry{GrNumOpt}{name=\textbf{Numerical Optimization},description={},sort=D}
+
+\newglossaryentry{nabla}{
+	name=Nabla Operator, %
+	description={\ensuremath{\nabla = \begin{bmatrix}
+									  	\frac{\partial}{\partial x_1} \\ \vdots \\  \frac{\partial}{\partial x_n}
+ 									  \end{bmatrix}}},
+  	sort=A
+	}
+\newglossaryentry{gradient}{
+	name=Gradient, %
+	description={\ensuremath{\text{grad} f(\bm{x}) = \nabla f =  \begin{bmatrix}
+				\frac{\partial f}{\partial x_1} \\ \vdots \\  \frac{\partial f}{\partial x_n}
+	\end{bmatrix}}},
+	sort=A
+}
+\newglossaryentry{hessian}{
+	name=Hessian Matrix, %
+	description={\ensuremath{\text{H}_f = \nabla (\nabla f) =  \begin{bmatrix}
+				\frac{\partial f^2}{\partial x_1 \partial x_1} & \cdots & \frac{\partial f^2}{\partial x_1 \partial x_n} \\ \vdots & \ddots & \vdots \\ \frac{\partial f^2}{\partial x_n \partial x_1} &\cdots&\frac{\partial f^2}{\partial x_n \partial x_n}
+	\end{bmatrix}}},
+	sort=A
+}
+\newglossaryentry{aa_scalar}{
+	name=Scalar number or function, %
+	description={\ensuremath{a\qquad}non bold math font},
+	sort=A
+}
+\newglossaryentry{aa_vector}{
+	name=Vectorial number or function, %
+	description={\ensuremath{\bm{a}\qquad}bold math font},
+	sort=A
+}
+\newglossaryentry{aa_Xvector}{
+    name=Optimization vector, %
+    description={\ensuremath{\bm{X}\qquad}capital bold math font},
+    sort=A
+}
+\newglossaryentry{ab_matrix}{
+	name=Matrix, %
+	description={\ensuremath{A\qquad}capital non bold math font},
+	sort=A
+}
+\newglossaryentry{pdMatrix}{
+	name={positive definite Matrix}, %
+	description={All eigenvalues of \ensuremath{A} are \ensuremath{> 0}},
+	sort=A
+}
+\newglossaryentry{spdMatrix}{
+	name={semi positive definite Matrix}, %
+	description={All eigenvalues of \ensuremath{A} \ensuremath{= 0}},
+	sort=A
+}
+\newglossaryentry{degreeOfFreedom}{
+    name={Degrees of freedom}, %
+    description={Number of parameters that can be modified to change the objective. Constraints might reduce this number},
+    sort=A
+}
+\newglossaryentry{fresnelIntegrals}{
+    name={Fresnel integrals}, %
+    description={Two transcendental functions \ensuremath{S(x) = \int_{0}^{x} \sin(t^2 ) \mathrm{d}t, \quad C(x) = \int_{0}^{x} \cos(t^2 ) \mathrm{d}t} named after Augustin-Jean Fresnel with no analytical solution. The parametric simultaneous plot results in the Euler spiral},
+    sort=A
+}
+%###################################### Road Design
+
+\newglossaryentry{aa_geoLine}{name={Geometry line},description={Trajectory in the Plan View which the road follows, no width or lane information. In OpenDRIVE it is called Reference line and the center of the road},
+	sort=B}
+
+\newglossaryentry{ab_curvGraph}{name={Curvature graph},description={Illustration of the curvature behavior along the road. Plotted as curvature [1/m] over distance [m]},
+    sort=B}
+\newglossaryentry{interchange}{name={Interchange},description={Big road junction without crossings, usually used among two (or more) motorways.},
+    sort=B}
+\newglossaryentry{planView}{name={Plan view},description={Bird's-eye view of the simulation map. 2D representation of roads and other elements.},
+    sort=B}
+\newglossaryentry{geometricPrimitive}{name={Geometric Primitive},description={Elements in 2D space such as line, spiral, arc. Defined by start point and orientation as well as length and if necessary curvature values},
+    sort=B}
+\newglossaryentry{eulerSpiral}{name={Euler spiral or clothoid},description={Special type of spiral for which the curvature increases linear dependent on the length},
+    sort=B}
+\newglossaryentry{conceptionclass}{name={Conception class},description={Classifications defined in for German roads with various constraints on curvature properties depending on the purpose of the desired road.},
+    sort=B}
+
+%################################## Simulation Maps
+\newglossaryentry{odr}{name={OpenDRIVE},description={Simulation map standard in XML format. Maintained by Vires company},
+    sort=C}
+\newglossaryentry{vtd}{name={Vires VTD},description={Virtual Test Drive, a simulation tool chain for driving simulation used for the development of driver assistant and automated driving systems. The application is equipped with a 3D visualization of the simulation},
+    sort=C}
+\newglossaryentry{gpsCoordinates}{name={GPS},description={Geographic coordinate system. The origin of an OpenDRIVE map is given in GPS coordinates. Those are stated by latitude and longitude given as degree values. The zero degree line of latitude is the equator and zero longitude is located in Greenwich, UK.},
+    sort=C}
+\newglossaryentry{roadLayout}{name={Road layout},description={In OpenDRIVE a road consists of a reference line, lanes and features. Those elements are organized in a XML structure.},
+    sort=C}
+\newglossaryentry{gnss}{name={GNSS},description={Global navigation satellite system. E.g. GPS},
+    sort=C}
+
+
+%################################ Numerical Optimization
+%\newglossaryentry{}{name={Road Layout},description={In OpenDRIVE a road consists of a reference line, lanes and features. Those elements are organized in a XML structure.},
+%    sort=D}
+
+\setglossarystyle{long}
+\makeindex
+\makeglossaries
+\glsaddall
+
+%\newglossarystyle{symbSt}{
+%	\renewenvironment{theglossary}{}{}
+%	\renewcommand*{\glossaryheader}{}
+%	\renewcommand*{\glsgroupheading}[1]{}
+%	\renewcommand*{\glsgroupskip}{}
+%	\renewcommand*{\glossaryentryfield}[2]{	
+%%		\glstarget{##1}{##2}		%Bezeichnung der Gruppe
+%%		\vspace{0,1cm}
+%%		\hrule
+%%		\vspace{0,2cm}
+%	}
+%	\renewcommand*{\glossarysubentryfield}[5]{			
+%		%Unterscheidung zwischen Index oder Formelzeichen
+%		\ifx##5\relax							%falls Einheit (##5) nicht angegeben
+%			\tabto{0cm}\glstarget{##2}{##3}		%Formelzeichen
+%			\tabto{3.5cm}{##4}					%Erklaerung
+%			\\[4pt]
+%		\else
+%			\tabto{0cm} \glstarget{##2}{##3}	%Formelzeichen
+%			\tabto{1,5cm}{[##5]}				%Einheit in eckigen Klammern
+%			\tabto{3.5cm}{##4}					%Erklaerung
+%			\\[4pt]
+%		\fi
+%	}
+%}
+%\newglossarystyle{abkSt}{
+%	\renewenvironment{theglossary}{}{}
+%	\renewcommand*{\glossaryheader}{}
+%	\renewcommand*{\glsgroupheading}[1]{}
+%	\renewcommand*{\glsgroupskip}{}
+%	\renewcommand*{\glossaryentryfield}[3]{
+%		\glstarget {##1}{##2}						%Abkuerzung
+%		\tabto*{3.5cm}{##3}							%ausgeschriebene Form
+%		\\[4pt]
+%	}
+%}
+% 
+%% Ein eigenes Symbolverzeichnis erstellen
+%\newglossary[slg]{symbV}{syi}{syg}{Symbolverzeichnis}
+% 
+%%Glossar-Befehle anschalten
+%
+% 
+%% Gruppierung nach lateinischen und griechischen Formelzeichen sowie Indizes
+%\newglossaryentry{Latein}{
+%	name=\textbf{\mbox{Lateinische Symbole}},
+%	description={},
+%	sort=1
+%}
+%
+%\newglossaryentry{Griech}{
+%	name=\textbf{\mbox{Griechische Symbole}},
+%	description={},
+%	sort=2
+%}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%									%
+%% Beginn lateinische Formelzeichen	%
+%%									%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\newglossaryentry{symb:j}{
+%	name={\ensuremath{j}},
+%	description={Ruck},
+%	symbol=\si{m/s^3},
+%	parent=Latein,
+%	type=symbV,
+%	sort=j
+%}
+%
+%\newglossaryentry{symb:N}{
+%	name={\ensuremath{N}},
+%	description={Anzahl der Diskretisierungspunkte},
+%	parent=Latein,
+%	type=symbV,
+%	sort=N
+%}
+%
+%\newglossaryentry{symb:v}{
+%	name={\ensuremath{v}},
+%	description={Geschwindigkeit},
+%	symbol=\si{m/s},
+%	parent=Latein,
+%	type=symbV,
+%	sort=v
+%}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ende lateinische Formelzeichen	%
+%%									%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%									%
+%% Beginn griechische Formelzeichen	%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\newglossaryentry{symb:alpha}{
+%	name={\ensuremath{\alpha}},
+%	description={Lenkrate bezogen auf den Radlenkwinkel der Vorderachse},
+%	symbol=\si{rad\per\second},
+%	parent=Griech,
+%	type=symbV,
+%	sort=alpha
+%}
+%
+%\newglossaryentry{symb:delta}{
+%	name={\ensuremath{\delta}},
+%	description={Radlenkwinkel der Vorderachse (Einspurmodell)},
+%	symbol=\si{rad},
+%	parent=Griech,
+%	type=symbV,
+%	sort=delta
+%}
+%
+%\newglossaryentry{symb:rho}{
+%	name={\ensuremath{\rho}},
+%	description={Krümmungsradius},
+%	symbol=\si{m},
+%	parent=Griech,
+%	type=symbV,
+%	sort=rho
+%}
+%
+%\newglossaryentry{symb:tau}{
+%	name={\ensuremath{\tau}},
+%	description={Zeitlücke},
+%	symbol=\si{\second},
+%	parent=Griech,
+%	type=symbV,
+%	sort=tau
+%}
+%
+%\newglossaryentry{symb:yaw}{
+%	name={\ensuremath{\protect\psi}},
+%	description={Gierwinkel},
+%	symbol=\si{rad},
+%	parent=Griech,
+%	type=symbV,
+%	sort=psi
+%}
+%
+%\newglossaryentry{symb:yawr}{
+%	name={\ensuremath{\protect\dot{\psi}}},
+%	description={Gierrate},
+%	symbol=\si{rad/s},
+%	parent=Griech,
+%	type=symbV,
+%	sort=psid
+%}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%									%
+%% Ende griechische Formelzeichen	%
+%%									%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%									%
+%% Beginn des Abkürzungsverzeichnis	%
+%%									%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%% glossary für versteckte Einträge
+%\newignoredglossary{hidden}
+%
+%\newacronym{ika}{IKA}{Institut für Kraftfahrzeuge der RWTH Aachen}
+%\glsmoveentry{ika}{hidden} 
+%
+%\newacronym[
+%	description = {Aktive Geschwindigkeitsregelung, engl. Adaptive Cruise Control}
+%	]{acc}{ACC}{Adaptive Cruise Control}
+%
+%\newacronym[
+%	description = {Antiblockiersystem}
+%	]{abs}{ABS}{Antiblockiersystem}
+%
+%\newacronym[
+%	description={modellprädiktive Regelung},
+%	firstplural = {modellprädiktiven Regelungen (MPC)}
+%	]{mpc}{MPC}{modellprädiktiven Regelung}
+%
+%\newacronym[
+%	description = {Notbremsassistent, engl. Autonomous Emergency Braking},
+%	firstplural = {Notbremsassistenten}
+%	]{aeb}{AEB}{Notbremsassistent}
+%
+%\newacronym[
+%	description = {Elektronisches Stabilitätsprogramm, engl. Electronic Stability Control}
+%	]{esc}{ESC}{Elektronische Stabilitätsprogramm}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%									%
+%% Ende des Abkürzungsverzeichnis	%
+%%									%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%% Alle definierten Einträge hinzufügen
+%\glsaddall
