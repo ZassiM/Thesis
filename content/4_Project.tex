@@ -1,0 +1,8 @@
+% !TeX root = ../main.tex
+\chapter{Project}
+\label{ch:pj}
+For addressing the objectives of the thesis, a software application has been developed which helps us to understand the reasoning of the SpatialDETR model. Trying to make it adaptable, a model selection is allowed. Therefore, it is possible to use it for various SpatialDETR configuration, e.g with only query center projection. 
+At the moment, the application is addressed to developers who want to see how the 3D Detection works behind the scene. 
+It is possible to select the attention visualization mechanism (e.g head fusion, attention rollout, gradient rollout), the attention discard ratio, the  layer (6 in SpatialDETR), the camera (6 in NuScenes dataset). 
+Furthemore, it is possible to select the prediction threshold for detection and to visualize the ground trouth bounding boxes. All this flexibility allows for a better understanding of the Transformer model and will help to decide, for example, which attention visualization mechanism better explains the model. 
+Therefore this application can be adapted to normal users and authorities by selecting the best configuration for XAI.

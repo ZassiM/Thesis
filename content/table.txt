@@ -1,11 +1,15 @@
 Introduction
     Explainable AI
     3D Object Detection
-    Transformers
+    Vision Transformers
 
 StateOfTheArt
+    DETR
     SpatialDETR
-    XAI techniques
-    
+    Explainable Transformer
 
+Research Questions
 
+Project/Application
+
+Conclusion
