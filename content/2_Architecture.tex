@@ -1,0 +1,16 @@
+% !TeX root = ../main.tex
+\chapter{Architecture}
+SpatialDETR is the framework chosen for incorporating explainability features, which are visualized using the Application described in Chapter \cite{ch:app}. It is a state-of-the-art 3D Object Detection model based on the Transformer model. Therefore, it is important to understand its architecture and how we can explain its reasoning.
+SpatialDETR is actually an extension to the DETR3D architecture, which in turn is based on the popular DETR (DEtection TRansformer). 
+In this chapter, DETR is first introduced, which forms the basis of many transformer-based object detection models. Then, DETR3D architecture is described. Finally, SpatialDETR is extensivly described by also highlighting the differences with DETR3D.
+\label{ch:sota}
+\section{DEtection TRansformer - DETR}
+Object detection involves the identification of one or more objects in an image by drawing bounding boxes around them and assigning their labels. It is a more complex task than image classification, which predicts the class of only one object in an image.
+DETR is a 2D Object Detector based on an encoder-decoder transformer model, developed by the Facebook AI team \cite{carion2020end}. It is simpler and more accurate than the well-established object detectors such as Faster R-CNN \cite{ren2015faster}. 
+The state-of-the-art 2D object detectors are typically two-stage detectors \cite{girshick2015fast} \cite{carion2020end}: they first extract "candidate" regions of object and then they extract features from those regions (by using fully convolutional neural networks) which are finally classified by a fully connected layer. Furthemore, post-processing steps such as NMS (non-maximal suppression) are needed for avoiding near-duplicates
+
+\section{DETR3D}
+...
+
+\section{SpatialDETR}
+...

@@ -1,0 +1,5 @@
+\chapter{Explainable Transformer}
+Explainability has a well established literature for natural language processing, with techniques such as SHAP and LIME. However, in computer vision there are not standard techniques for explainability. This is even more lacking in for the Transformer architecture. 
+However, only in the last years there have been some work toward Explainable Transformer, applied to DeiT and DETR models \cite{touvron2021training} \cite{chefer2021transformer} \cite{chefer2021generic}. Unfortunately, as far as I know there are yet any work toward explaining transformer-based 3D Object Detection.
+It is however possible to implement those techniques for SpatialDETR, and even to other 3D object detectors. 
+In this chapter, some techniques used for Explainable Transformers are described, such as Attention Rollout and Gradient Rollout. Then, I will discuss how to implement those to the SpatialDETR architecture.  
